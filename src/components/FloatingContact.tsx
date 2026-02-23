@@ -5,7 +5,10 @@ export default function FloatingContact() {
     const phoneNumber = '+919495639056';
     const whatsappNumber = '919495639056';
     const whatsappMessage = 'Hello, I would like to know more about your services!';
-    const instagramUrl = 'https://www.instagram.com/abhnav.___?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
+    // Using simple format without tracking query parameters to prevent mobile routing issues.
+    // When using standard https links, iOS and Android automatically intercept and open the app
+    // if it is installed, and fall back to browser if not.
+    const instagramUrl = 'https://www.instagram.com/abhnav.___/';
 
     const callUrl = `tel:${phoneNumber}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
