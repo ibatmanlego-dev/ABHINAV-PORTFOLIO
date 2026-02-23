@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #C9A84C;
+  --color-secondary: #8B3A2A;
+  --color-rust-accent: #A0522D;
+  --color-background: #030303;
+  --color-foreground: #F5F5F5;
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-paragraph: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
