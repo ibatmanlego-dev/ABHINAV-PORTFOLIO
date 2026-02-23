@@ -535,7 +535,7 @@ export default function HomePage() {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="text-center z-10">
                                         <h3 className="text-6xl md:text-8xl font-heading font-bold text-primary animate-pulse opacity-90 mb-4">
-                                            തിരയാട്ടം
+                                            തിറയാട്ടം
                                         </h3>
                                         <p className="text-xl font-paragraph text-white/60 tracking-[0.5em] uppercase">Thirayattam</p>
                                     </div>
