@@ -8,7 +8,22 @@ export default function FloatingContact() {
     // Using simple format without tracking query parameters to prevent mobile routing issues.
     // When using standard https links, iOS and Android automatically intercept and open the app
     // if it is installed, and fall back to browser if not.
-    const instagramUrl = 'https://www.instagram.com/abhnav.___/';
+    const instagramFallbackUrl = 'https://www.instagram.com/abhnav.___/';
+    const instagramAppUrl = 'instagram://user?username=abhnav.___';
+
+    const handleInstagramClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+
+        // Try to open the native app URI scheme
+        window.location.href = instagramAppUrl;
+
+        // Set a timeout to fallback to the web URL if the app doesn't open
+        // If the app successfully opens, the page usually pauses execution,
+        // so the timeout might not fire immediately.
+        setTimeout(() => {
+            window.location.href = instagramFallbackUrl;
+        }, 500);
+    };
 
     const callUrl = `tel:${phoneNumber}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -57,9 +72,8 @@ export default function FloatingContact() {
             </motion.a>
 
             <motion.a
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={instagramFallbackUrl}
+                onClick={handleInstagramClick}
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
