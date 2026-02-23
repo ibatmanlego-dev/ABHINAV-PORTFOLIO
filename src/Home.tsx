@@ -85,50 +85,6 @@ const PROJECT_REEL_DATA = [
 
 // --- UTILITY COMPONENTS ---
 
-const MagneticButton = ({ children, className = "", onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
-    const ref = useRef<HTMLButtonElement>(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-
-    const handleMouse = (e: React.MouseEvent) => {
-        const { clientX, clientY } = e;
-        const { height, width, left, top } = ref.current!.getBoundingClientRect();
-        const middleX = clientX - (left + width / 2);
-        const middleY = clientY - (top + height / 2);
-        setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
-    };
-
-    const reset = () => {
-        setPosition({ x: 0, y: 0 });
-    };
-
-    const { x, y } = position;
-    return (
-        <motion.button
-            ref={ref}
-            className={className}
-            animate={{ x, y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-            onMouseMove={handleMouse}
-            onMouseLeave={reset}
-            onClick={onClick}
-        >
-            {children}
-        </motion.button>
-    );
-};
-
-const SectionHeading = ({ eyebrow, title, highlight }: { eyebrow: string, title: string, highlight: string }) => (
-    <div className="mb-12 md:mb-20">
-        <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-px bg-primary" />
-            <span className="text-xs font-paragraph tracking-[0.3em] text-primary uppercase">{eyebrow}</span>
-        </div>
-        <h2 className="text-5xl md:text-7xl font-heading font-light text-foreground leading-[0.9]">
-            {title} <span className="italic text-primary block md:inline">{highlight}</span>
-        </h2>
-    </div>
-);
-
 // --- MAIN COMPONENT ---
 
 export default function HomePage() {
